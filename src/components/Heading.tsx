@@ -1,13 +1,10 @@
-import React from "react";
-import { useSelector } from "react-redux";
-import { RootState } from "../states/store";
+import React from 'react';
+import { useAppSelector } from '../states/hooks';
 
-const Heading: React.FunctionComponent = () => {
-  const name = useSelector((state: RootState) => state.nameReducer.name);
+const Heading: React.FC = React.memo(() => {
+  const name = useAppSelector((state) => state.nameReducer.name);
 
-  return (
-    <h1>{name}</h1>
-  );
-};
+  return <h1>{name}</h1>;
+});
 
 export default Heading;
