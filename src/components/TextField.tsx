@@ -1,13 +1,15 @@
-import React from "react";
-import { useDispatch } from "react-redux";
-import { nameActions } from "../states/reducers/nameReducer";
+import React from 'react';
+import { useAppDispatch } from '../states/hooks';
+import { nameActions } from '../states/reducers/nameReducer';
 
-const TextField: React.FunctionComponent = () => {
-  const dispatch = useDispatch();
+const TextField: React.FC = () => {
+  const dispatch = useAppDispatch();
 
-  return (
-    <input type="text" onChange={(event) => dispatch(nameActions.setName(event.target.value))}/>
-  );
+  const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+    dispatch(nameActions.setName(event.target.value));
+  };
+
+  return <input type="text" onChange={handleChange} />;
 };
 
 export default TextField;
